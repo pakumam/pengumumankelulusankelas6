@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pengumuman Kelulusan Kelas 6 - 2024/2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2a7ae4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    .search-box {
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      border: none;
+      background-color: #2a7ae4;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .note {
+      margin-top: 40px;
+      background-color: #fffbcc;
+      padding: 15px;
+      border: 1px solid #e6db55;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Pengumuman Kelulusan</h1>
+    <p>Siswa Kelas 6 - Tahun Ajaran 2024/2025</p>
+  </header>
+
+  <main>
+    <h2>Sambutan Kepala Sekolah</h2>
+    <p>Assalamu'alaikum warahmatullahi wabarakatuh,<br><br>
+    Selamat kepada seluruh siswa kelas 6 yang telah menyelesaikan pendidikan di jenjang Sekolah Dasar. Semoga ilmu yang telah didapatkan dapat menjadi bekal untuk jenjang berikutnya. Tetap semangat, jaga semangat belajar dan terus berprestasi!<br><br>
+    Wassalamu'alaikum warahmatullahi wabarakatuh.
+    </p>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Masukkan nama atau nomor peserta">
+      <button onclick="searchStudent()">Cari</button>
+    </div>
+
+    <div class="result" id="resultArea">
+      <!-- Hasil pencarian akan muncul di sini -->
+    </div>
+
+    <div class="note">
+      <strong>Catatan:</strong> Pengambilan SKL dilakukan mulai tanggal 10 Juni 2025 di ruang Tata Usaha, pukul 08.00 - 12.00 WIB.
+    </div>
+  </main>
+
+  <script>
+    const dataSiswa = [
+      { nama: "ABELYSA NAUFALYN FIKRIA RABBANI", nomor: "0136848812", status: "LULUS" },
+      { nama: "AHMAD ISYROH FUAIDY", nomor: "0136910444", status: "LULUS" },
+      { nama: "ALDEBARAN TSAQIB ANANDA REZA", nomor: "0123605806", status: "LULUS" },
+      { nama: "ANDROWMEDA LASTANA AGDA", nomor: "0133124534", status: "LULUS" },
+      { nama: "ARJUNA ARDA ERLANGGA", nomor: "0138173871", status: "LULUS" },
+      { nama: "BRIAN FARIZAL HILMI", nomor: "0128314123", status: "LULUS" },
+      { nama: "FAVIAN NUR TSAQIF", nomor: "0132273865", status: "LULUS" },
+      { nama: "FELY ADELIA PUTRI", nomor: "0127780685", status: "LULUS" },
+      { nama: "FILIA ELFRIDA TASYA", nomor: "3129984174", status: "LULUS" },
+      { nama: "FIRLY IM'HAN YOVANSYA", nomor: "0138965682", status: "LULUS" },
+      { nama: "GILANG PUTRA ROMADHON", nomor: "0127996743", status: "LULUS" },
+      { nama: "GILANG RAMADHAN MH", nomor: "0124755844", status: "LULUS" },
+      { nama: "HUSAMA IZAILANI PERMANA", nomor: "3128267536", status: "LULUS" },
+      { nama: "KHOLISNA AULIA KARIMA", nomor: "0125793918", status: "LULUS" },
+      { nama: "MOH AZKA ZAIDAN ANDIANSYAH", nomor: "0129929588", status: "LULUS" },
+      { nama: "MOHAMMAD FEBRIAN ADI SAPUTRA", nomor: "3125713136", status: "LULUS" },
+      { nama: "MUHAMMAD AGUS ALI ROHMAN", nomor: "0125838477", status: "LULUS" },
+      { nama: "MUHAMMAD ALIF SEYLINDRA", nomor: "3138623984", status: "LULUS" },
+      { nama: "MUHAMMAD ARGI FADILAH FALENDRA", nomor: "0134778880", status: "LULUS" },
+      { nama: "MUHAMMAD DIMAS ADITYA", nomor: "0128982927", status: "LULUS" },
+      { nama: "MUHAMMAD HABIB IZZUL FURQON", nomor: "0138291836", status: "LULUS" },
+      { nama: "NAJMA ATHIFATUL RAHMA MAULIDIA", nomor: "0139196934", status: "LULUS" },
+      { nama: "NAJWA SYAKIRA ALYA PUTRI", nomor: "0127537338", status: "LULUS" },
+      { nama: "NOVA NUR AZIZAH", nomor: "3137457067", status: "LULUS" },
+      { nama: "RAFAEL DIMAS SAPUTRA", nomor: "3127996770", status: "LULUS" },
+      { nama: "RAVANDO FAHRI PRATAMA", nomor: "0127993168", status: "LULUS" },
+      { nama: "RIZKY BAGUS PRATAMA", nomor: "3123885288", status: "LULUS" },
+      { nama: "SEKAR ARUM", nomor: "3129350519", status: "LULUS" },
+      { nama: "SELI PRIDIA", nomor: "0124362068", status: "LULUS" },
+      { nama: "SEPTIARANY HAYYA AKAISHA", nomor: "3127519168", status: "LULUS" },
+      { nama: "ZASKIA NAYLI ARFIANI", nomor: "3126315979", status: "LULUS" },
+      { nama: "ZAURA SUDHIRJA FAHMA", nomor: "0137792112", status: "LULUS" }
+    ];
+
+    function searchStudent() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const resultArea = document.getElementById("resultArea");
+      const found = dataSiswa.find(siswa =>
+        siswa.nama.toLowerCase().includes(input) || siswa.nomor.includes(input)
+      );
+
+      if (found) {
+        resultArea.innerHTML = `
+          Nama: ${found.nama} <br>
+          Nomor Peserta: ${found.nomor} <br>
+          Status Kelulusan: <span style="color: ${found.status === 'LULUS' ? 'green' : 'red'}">
+          ${found.status}</span>
+        `;
+      } else {
+        resultArea.innerHTML = "Data siswa tidak ditemukan.";
+      }
+    }
+  </script>
+</body>
+</html>
